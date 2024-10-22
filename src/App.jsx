@@ -1,9 +1,13 @@
 import { useState } from "react";
 import DefaultModal from "./components/DefaultModal";
+import StorageHandler from "./components/StorageHandler";
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
 
+  /**
+   * shows / hides the modal content
+   */
   const toggleModal = () => {
     setModalOpen((prev) => !prev);
   };
@@ -20,6 +24,7 @@ function App() {
         open modal
       </button>
       {modalOpen && <DefaultModal toggleModal={toggleModal} />}
+      <StorageHandler />
     </>
   );
 }
