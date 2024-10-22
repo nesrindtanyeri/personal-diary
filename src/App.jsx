@@ -24,7 +24,6 @@ function App() {
         open modal
       </button>
       {modalOpen && <DefaultModal toggleModal={toggleModal} />}
-      <StorageHandler />
     </>
   );
 }
