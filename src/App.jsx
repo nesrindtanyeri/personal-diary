@@ -15,7 +15,25 @@ function App() {
   return (
     <>
       <header>Header</header>
-      <main>Main</main>
+      <main>
+        <section
+          id="list"
+          className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6"
+        >
+          <h2>Entries</h2>
+          <div className="grid grid-cols-4">
+            <button className="card rounded-lg shadow-lg" onClick={toggleModal}>
+                <img
+                  src="https://picsum.photos/400"
+                  alt="Title"
+                  className="rounded-t-lg"
+                />
+                <span className="text-sm px-2.5 py-1">22.10.2024</span>
+                <h3 className="px-2.5 py-1">Title</h3>
+            </button>
+          </div>
+        </section>
+      </main>
       <footer>Footer</footer>
       <button
         onClick={toggleModal}
