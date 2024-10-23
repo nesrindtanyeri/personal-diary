@@ -89,22 +89,29 @@ const AddDiaryEntry = ({ addEntry }) => {
 
   {/* Modal */}
   {isModalOpen && (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-4 rounded-lg shadow-lg w-96 h-96 overflow-auto relative">
-        <h2 className="text-lg text-pink-400 text-center font-bold mb-4">Select an Image</h2>
-        <button
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-          onClick={() => setIsModalOpen(false)}
-        >
-          X
-        </button>
+  <div
+    className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center"
+    style={{
+      backgroundImage: 'url(https://picsum.photos/600/900)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}
+  >
+    <div className="bg-white p-4 rounded-lg shadow-lg w-96 h-96 overflow-auto relative">
+      <h2 className="text-lg text-pink-400 text-center font-bold mb-4">Select an Image</h2>
+      <button
+        className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+        onClick={() => setIsModalOpen(false)}
+      >
+        X
+      </button>
 
         {/* Random Photos */}
         <div className="grid grid-cols-3 gap-2">
           {[...Array(9)].map((_, i) => (
             <img
               key={i}
-              src={`https://picsum.photos/200?random=${i}`}
+              src={`https://picsum.photos/500/300?random=${i}`}
               alt="Random"
               className="w-full h-full object-cover cursor-pointer"
               onClick={() => handleImageSelect(`https://picsum.photos/200?random=${i}`)}
