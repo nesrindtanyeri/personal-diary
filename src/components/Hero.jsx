@@ -1,14 +1,11 @@
 import ThemeSwitcher from "./ThemeSwitcher";
 import StorageHandler from "./StorageHandler";
 
-const imgUrl = new URL("../assets/bg.jpg", import.meta.url).href;
+const Hero = ({ openDairyEntryModal, toggleModal }) => {
+  const imgUrl = new URL("../assets/bg.jpg", import.meta.url).href;
+  console.log(imgUrl);
 
-const Hero = ({ toggleModal }) => {
   const todaysEntry = StorageHandler.getTodaysEntry();
-
-  console.log(todaysEntry);
-  
-
   return (
     <div
       className="hero min-h-screen"
@@ -28,7 +25,7 @@ const Hero = ({ toggleModal }) => {
           {todaysEntry ? (
             // we have an entry for today, so we have to open the entry details modal
             <button className="btn btn-primary" onClick={toggleModal}>
-              View today's entry 
+              View today's entry
             </button>
           ) : (
             // we have no entry for today, so we have to open the form-input modal
@@ -36,6 +33,9 @@ const Hero = ({ toggleModal }) => {
               Add today's entry now
             </button>
           )}
+          <button className="btn btn-primary" onClick={openDairyEntryModal}>
+            Nesrin's button
+          </button>
           <ThemeSwitcher />
         </div>
       </div>
