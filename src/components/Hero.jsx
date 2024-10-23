@@ -6,6 +6,9 @@ const imgUrl = new URL("../assets/bg.jpg", import.meta.url).href;
 const Hero = ({ toggleModal }) => {
   const todaysEntry = StorageHandler.getTodaysEntry();
 
+  console.log(todaysEntry);
+  
+
   return (
     <div
       className="hero min-h-screen"
