@@ -8,7 +8,7 @@ const Hero = ({ openDairyEntryModal, toggleModal, setSelectedItem }) => {
   const todaysEntry = StorageHandler.getTodaysEntry();
 
   const setModalContent = () =>{
-    setSelectedItem(todaysEntry);
+    setSelectedItem({...todaysEntry});
   }
 
   return (

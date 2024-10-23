@@ -10,6 +10,7 @@ function App() {
   const [selectedItem, setSelectedItem] = useState(false);
 
   useEffect(() => {
+    console.log(selectedItem)
     if (!selectedItem) return;
     toggleModal();
   }, [selectedItem]);
