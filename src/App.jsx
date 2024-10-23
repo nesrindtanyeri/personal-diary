@@ -23,8 +23,10 @@ function App() {
   return (
     <>
       <header>
-        <Hero toggleModal={toggleModal} />
+        <Hero openDairyEntryModal={openDairyEntryModal} toggleModal={toggleModal} />
+        
         <DiaryEntryModal />
+        
       </header>
 
       <main className="py-8 px-4 mx-auto max-w-screen-xl grid grid-cols-3 gap-6">
@@ -37,7 +39,6 @@ function App() {
         <Card />
         <Card />
       </main>
-<button className="btn btn-primary" onClick={openDairyEntryModal}>Nesrin's button</button>
     <Footer />
 
       <DefaultModal  />

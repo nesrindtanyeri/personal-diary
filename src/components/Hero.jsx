@@ -2,7 +2,7 @@ import ThemeSwitcher from "./ThemeSwitcher";
 
 const imgUrl = new URL('../assets/bg.jpg', import.meta.url).href;
 
-const Hero = ({toggleModal}) => {
+const Hero = ({openDairyEntryModal, toggleModal}) => {
     console.log(imgUrl);
   return (
     <div
@@ -25,7 +25,8 @@ const Hero = ({toggleModal}) => {
         </button>
         <button className="btn btn-primary" onClick={toggleModal}>
           View today's entry (if present)
-        </button>
+        </button> 
+        <button className="btn btn-primary" onClick={openDairyEntryModal}>Nesrin's button</button>
         <ThemeSwitcher />
       </div>
     </div>
