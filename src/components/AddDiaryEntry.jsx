@@ -6,6 +6,7 @@ const AddDiaryEntry = ({ addEntry }) => {
   const [date, setDate] = useState('');
   const [image, setImage] = useState('');
   const [content, setContent] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,9 +24,18 @@ const AddDiaryEntry = ({ addEntry }) => {
     setContent('');
   };
 
+  const handleBrowseClick = () => {
+    setIsModalOpen(true); 
+  };
+
+  const handleImageSelect = (url) => {
+    setImage(url); 
+    setIsModalOpen(false); 
+  };
+
   return (
     <form className="add-entry-form" onSubmit={handleSubmit}>
-      <h2 className="text-xl font-bold mb-4">Add New Event</h2>
+      <h2 className="text-xl font-bold mb-4">Add New Diary Entry</h2>
 
       <div>
         <label>Title:</label>
@@ -46,12 +56,15 @@ const AddDiaryEntry = ({ addEntry }) => {
       </div>
 
       <div>
-        <label>Image URL (Optional):</label>
+        <label>Image URL:</label>
         <input
           type="url"
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
+        <button type="button" className="bg-gray-300 px-4 py-2 mt-2" onClick={handleBrowseClick}>
+          Browse Images
+        </button>
       </div>
 
       <div>
@@ -65,6 +78,34 @@ const AddDiaryEntry = ({ addEntry }) => {
       <button type="submit" className="bg-blue-500 text-white py-2 px-4 mt-4">
         Add Entry
       </button>
+
+      {}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-4 rounded shadow-lg w-96 h-96 overflow-auto">
+            <h2 className="text-lg font-bold mb-4">Select an Image</h2>
+            <button
+              className="absolute top-2 right-2 text-gray-500"
+              onClick={() => setIsModalOpen(false)}
+            >
+              X
+            </button>
+
+            {/* Random Photos */}
+            <div className="grid grid-cols-3 gap-2">
+              {[...Array(9)].map((_, i) => (
+                <img
+                  key={i}
+                  src={`https://picsum.photos/200?random=${i}`}
+                  alt="Random"
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => handleImageSelect(`https://picsum.photos/200?random=${i}`)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </form>
   );
 };

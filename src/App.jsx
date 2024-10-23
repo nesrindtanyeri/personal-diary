@@ -24,6 +24,7 @@ function App() {
     <>
       <header>
         <Hero toggleModal={toggleModal} />
+        <DiaryEntryModal />
       </header>
 
       <main className="py-8 px-4 mx-auto max-w-screen-xl grid grid-cols-3 gap-6">
@@ -40,7 +41,7 @@ function App() {
     <Footer />
 
       <DefaultModal  />
-      <DiaryEntryModal />
+     
     </>
   );
 }
