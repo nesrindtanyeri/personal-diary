@@ -13,7 +13,7 @@ const StorageHandler = {
    */
   addItem: (item) => {
     // a random ID for the entry
-    const id = this.createRandomID();
+    const id = StorageHandler.createRandomID();
     // a date object with the current time
     const timestamp = Date.now();
     // add id & timestamp to the item

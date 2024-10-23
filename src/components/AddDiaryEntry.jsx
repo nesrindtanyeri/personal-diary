@@ -16,7 +16,7 @@ const AddDiaryEntry = ({ addEntry }) => {
     }
 
     const newEntry = { title, date, image, content };
-    addEntry(newEntry);
+    StorageHandler.addItem(newEntry);
 
     setTitle('');
     setDate('');

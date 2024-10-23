@@ -33,7 +33,7 @@ const Card = ({entry}) => {
         <img
           src={imgPath}
           alt="Shoes"
-          className="object-cover"
+          className="w-full object-cover"
         />
       </figure>
       <div className="card-body">
