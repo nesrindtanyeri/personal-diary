@@ -91,7 +91,7 @@ const AddDiaryEntry = ({ addEntry }) => {
   {isModalOpen && (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-4 rounded-lg shadow-lg w-96 h-96 overflow-auto relative">
-        <h2 className="text-lg font-bold mb-4">Select an Image</h2>
+        <h2 className="text-lg text-pink-400 text-center font-bold mb-4">Select an Image</h2>
         <button
           className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
           onClick={() => setIsModalOpen(false)}
