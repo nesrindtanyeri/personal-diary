@@ -12,6 +12,12 @@ const StorageHandler = {
    * @param {Object} item the object containing the item's data
    */
   addItem: (item) => {
+    // a random ID for the entry
+    const id = this.createRandomID();
+    // a date object with the current time
+    const timestamp = Date.now();
+    // add id & timestamp to the item
+    item = {...item, id:id, timestamp:timestamp};
     const list = JSON.parse(localStorage.getItem("personalDiary")) || [];
     list.unshift(item);
     localStorage.setItem("personalDiary", JSON.stringify(list));
@@ -25,6 +31,14 @@ const StorageHandler = {
     const filteredList = list.filter((item) => item.id !== itemId);
     localStorage.setItem("personalDiary", JSON.stringify(filteredList));
   },
+
+  /**
+   * creates a random (unique) id to be used for the entries
+   * @returns {String} a random id
+   */
+  createRandomID : () => {
+    return crypto.randomUUID();
+  }
 };
 
 export default StorageHandler;

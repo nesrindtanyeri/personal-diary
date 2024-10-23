@@ -1,3 +1,5 @@
+import ThemeSwitcher from "./ThemeSwitcher";
+
 const imgUrl = new URL('../assets/bg.jpg', import.meta.url).href;
 
 const Hero = ({toggleModal}) => {
@@ -19,8 +21,12 @@ const Hero = ({toggleModal}) => {
           repudiandae et a id nisi.
         </p>
         <button className="btn btn-primary" onClick={toggleModal}>
-          Get Started
+          Add today's entry now (if none present)
         </button>
+        <button className="btn btn-primary" onClick={toggleModal}>
+          View today's entry (if present)
+        </button>
+        <ThemeSwitcher />
       </div>
     </div>
   </div>
