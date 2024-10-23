@@ -4,6 +4,7 @@ import StorageHandler from "./components/StorageHandler";
 import Card from "./components/Card";
 import Hero from "./components/Hero";
 import Footer from "./Footer";
+import DiaryEntryModal from "./components/DiaryEntryModal";
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -14,6 +15,9 @@ function App() {
   const toggleModal = () => {
     setModalOpen((prev) => !prev);
     document.getElementById("default-modal").showModal();
+  };
+  const openDairyEntryModal = () => {
+  document.getElementById("DairyEntryModal").showModal();
   };
 
   return (
@@ -32,10 +36,11 @@ function App() {
         <Card />
         <Card />
       </main>
-
+<button className="btn btn-primary" onClick={openDairyEntryModal}>Nesrin's button</button>
     <Footer />
 
-      <DefaultModal toggleModal={toggleModal} />
+      <DefaultModal  />
+      <DiaryEntryModal />
     </>
   );
 }
