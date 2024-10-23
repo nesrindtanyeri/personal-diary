@@ -17,11 +17,12 @@ const StorageHandler = {
     // a date object with the current time
     const timestamp = Date.now();
     // add id & timestamp to the item
-    item = {...item, id:id, timestamp:timestamp};
+    item = { ...item, id: id, timestamp: timestamp };
     const list = JSON.parse(localStorage.getItem("personalDiary")) || [];
     list.unshift(item);
     localStorage.setItem("personalDiary", JSON.stringify(list));
   },
+
   /**
    * removes an item from local storage
    * @param {Number} itemId the id of the item to remove
@@ -32,13 +33,27 @@ const StorageHandler = {
     localStorage.setItem("personalDiary", JSON.stringify(filteredList));
   },
 
+  getTodaysEntry: () => {
+    const list = JSON.parse(localStorage.getItem("personalDiary")) || [];
+    const found = list.find((item) => {
+      const today = new Date();
+      const itemDate = new Date(item.timestamp);
+      return (
+        itemDate.getDate() == today.getDate() &&
+        itemDate.getMonth() == today.getMonth() &&
+        itemDate.getFullYear() == today.getFullYear()
+      );
+    });
+    return found;
+  },
+
   /**
    * creates a random (unique) id to be used for the entries
    * @returns {String} a random id
    */
-  createRandomID : () => {
+  createRandomID: () => {
     return crypto.randomUUID();
-  }
+  },
 };
 
 export default StorageHandler;
