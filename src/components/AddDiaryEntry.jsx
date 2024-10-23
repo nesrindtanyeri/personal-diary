@@ -24,7 +24,7 @@ const AddDiaryEntry = ({ addEntry }) => {
 
   return (
     <form className="add-entry-form" onSubmit={handleSubmit}>
-      <h2 className="text-xl font-bold mb-4">Add New Entry</h2>
+      <h2 className="text-xl font-bold mb-4">Add New Event</h2>
 
       <div>
         <label>Title:</label>
