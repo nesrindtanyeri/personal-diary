@@ -1,11 +1,16 @@
 import ThemeSwitcher from "./ThemeSwitcher";
 import StorageHandler from "./StorageHandler";
 
-const Hero = ({ openDairyEntryModal, toggleModal }) => {
+const Hero = ({ openDairyEntryModal, toggleModal, setSelectedItem }) => {
   const imgUrl = new URL("../assets/bg.jpg", import.meta.url).href;
   console.log(imgUrl);
 
   const todaysEntry = StorageHandler.getTodaysEntry();
+
+  const setModalContent = () =>{
+    setSelectedItem({...todaysEntry});
+  }
+
   return (
     <div
       className="hero min-h-screen"
@@ -24,7 +29,7 @@ const Hero = ({ openDairyEntryModal, toggleModal }) => {
           </p>
           {todaysEntry ? (
             // we have an entry for today, so we have to open the entry details modal
-            <button className="btn btn-primary" onClick={toggleModal}>
+            <button className="btn btn-primary" onClick={() => setModalContent()}>
               View today's entry
             </button>
           ) : (
