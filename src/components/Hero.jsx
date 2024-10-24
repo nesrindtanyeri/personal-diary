@@ -28,17 +28,17 @@ const Hero = ({ openDairyEntryModal, toggleModal, setSelectedItem }) => {
           </p>
           {todaysEntry ? (
             // we have an entry for today, so we have to open the entry details modal
-            <button className="btn btn-primary" onClick={() => setModalContent()}>
-              View today's entry
+            <button className="btn btn-primary w-full py-4 mb-4" onClick={() => setModalContent()}>
+              See what happened today
             </button>
           ) : (
             // we have no entry for today, so we have to open the form-input modal
             <button className="btn btn-primary" onClick={toggleModal}>
-              Add today's entry now
+              Let's start!
             </button>
           )}
-          <button className="btn btn-primary" onClick={openDairyEntryModal}>
-            Nesrin's button
+          <button className="btn btn-primary w-full py-4" onClick={openDairyEntryModal}>
+            It is time to create a new memory
           </button>
           <ThemeSwitcher />
         </div>
