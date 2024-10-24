@@ -2,17 +2,26 @@ import { useEffect, useState } from "react";
 
 const Alert = (props) => {
   const [visible, setVisible] = useState(true);
+  const [opacityClass, setOpacityClass] = useState("opacity-0");
+
   useEffect(() => {
-    console.log(props.delay)
     setTimeout(() => {
       setVisible(false);
     }, props.delay);
   }, [props.delay]);
 
+  useEffect(() => {
+    setOpacityClass("opacity-100");
+    console.log(opacityClass);
+  }, []);
+
   return (
     <>
       {visible && (
-        <div role="alert" className={`alert alert-${props.type} mb-4`}>
+        <div
+          role="alert"
+          className={`alert alert-${props.type} mb-4 transition-opacity ease-in duration-700 ${opacityClass}`}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 shrink-0 stroke-current"
