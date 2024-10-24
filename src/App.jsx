@@ -27,8 +27,20 @@ function App() {
   useEffect(() => {
     const theme = StorageHandler.getTheme();
     document.documentElement.dataset.theme = theme;
-    document.body.classList.remove('hidden')
+    document.body.classList.remove('hidden');
   }, []);
+
+  // Handles editing the selected entry
+  const handleEdit = (item) => {
+    console.log("Editing item:", item);
+    // Add your edit logic here
+  };
+
+  // Handles deleting the selected entry
+  const handleDelete = (item) => {
+    console.log("Deleting item:", item);
+    // Add your delete logic here
+  };
 
   /**
    * shows / hides the modal content
@@ -36,6 +48,7 @@ function App() {
   const toggleModal = () => {
     document.getElementById("default-modal").showModal();
   };
+
   const openDairyEntryModal = () => {
     document.getElementById("DairyEntryModal").showModal();
   };
@@ -57,8 +70,10 @@ function App() {
 
       <AlertContainer alerts={alerts} />
 
-      <DiaryEntryModal />
-      <DefaultModal selectedItem={selectedItem} />
+      <DiaryEntryModal setAlerts={setAlerts} alerts={alerts} />
+
+      {/* Pass handleEdit and handleDelete to DefaultModal */}
+      <DefaultModal selectedItem={selectedItem} handleEdit={handleEdit} handleDelete={handleDelete} />
     </>
   );
 }
