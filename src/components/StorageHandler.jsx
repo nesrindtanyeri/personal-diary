@@ -24,7 +24,7 @@ const StorageHandler = {
   },
 
   /**
-   * removes an item from local storage
+   * removes an item from local storage by ID
    * @param {Number} itemId the id of the item to remove
    */
   removeItem: (itemId) => {
@@ -33,6 +33,21 @@ const StorageHandler = {
     localStorage.setItem("personalDiary", JSON.stringify(filteredList));
   },
 
+
+  /**
+   * removes an item from local storage by timestamp
+   * @param {Number} itemId the id of the item to remove
+   */
+  removeItemByTimestamp: (itemTimesamp) => {
+    const list = JSON.parse(localStorage.getItem("personalDiary")) || [];
+    const filteredList = list.filter((item) => item.timestamp !== itemTimesamp);
+    localStorage.setItem("personalDiary", JSON.stringify(filteredList));
+  },
+
+  /**
+   * gets today's entry from localStorage
+   * @returns {Object} today's entry
+   */
   getTodaysEntry: () => {
     const list = JSON.parse(localStorage.getItem("personalDiary")) || [];
     const found = list.find((item) => {
@@ -55,9 +70,18 @@ const StorageHandler = {
     return crypto.randomUUID();
   },
 
+  /**
+   * saves the theme to localStorage
+   * @param {String} theme 
+   */
   saveTheme: (theme)=>{
     localStorage.setItem("theme", theme)
   },
+
+  /**
+   * gets the saved theme from localStorage
+   * @returns {String}  the theme from localStorage
+   */
   getTheme:()=>{
     return localStorage.getItem("theme");
   }
