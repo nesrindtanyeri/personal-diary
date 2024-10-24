@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import StorageHandler from "./StorageHandler";
 
 const ThemeSwitcher = () => {
-  // TODO: save / retrieve theme using localStorage
   const [theme, setTheme] = useState(null);
 
   useEffect (() => {

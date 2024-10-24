@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 
 const Alert = (props) => {
   const [visible, setVisible] = useState(true);
-  const [opacityClass, setOpacityClass] = useState("opacity-0");
 
+  // use timeout to remove the Alert after a while
   useEffect(() => {
     setTimeout(() => {
       setVisible(false);
     }, props.delay);
   }, [props.delay]);
 
+  // add fade in effect on render
+  const [opacityClass, setOpacityClass] = useState("opacity-0");
   useEffect(() => {
     setOpacityClass("opacity-100");
   }, []);

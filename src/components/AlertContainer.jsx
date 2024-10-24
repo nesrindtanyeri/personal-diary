@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import Alert from "./Alert";
 
 const AlertContainer = ({ alerts }) => {
   return (
