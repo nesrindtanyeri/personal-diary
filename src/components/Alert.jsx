@@ -12,7 +12,6 @@ const Alert = (props) => {
 
   useEffect(() => {
     setOpacityClass("opacity-100");
-    console.log(opacityClass);
   }, []);
 
   return (

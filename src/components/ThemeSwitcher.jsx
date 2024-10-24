@@ -8,7 +8,6 @@ const ThemeSwitcher = () => {
   useEffect (() => {
     if(!theme) return;
     StorageHandler.saveTheme(theme);
-    console.log(theme)
   },[theme]);
 
   return (
