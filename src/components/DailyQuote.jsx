@@ -4,17 +4,18 @@ const DailyQuote = () => {
   const [quote, setQuote] = useState('');
   const [author, setAuthor] = useState('');
   const [loading, setLoading] = useState(false);
-
+  const quotesUrl = new URL("../assets/Quotes.json", import.meta.url).href;
   const fetchQuote = async () => {
     setLoading(true); 
     try {
-      const response = await fetch('https://goquotes-api.herokuapp.com/api/v1/random');
+      const response = await fetch(quotesUrl);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      setQuote(data[0].q); 
-      setAuthor(data[0].a); 
+const randomNumber = Math.floor(Math.random() * data.length);
+      setQuote(data[randomNumber].q); 
+      setAuthor(data[randomNumber].a); 
     } catch (error) {
       console.error('Error fetching quote:', error);
       setQuote('Could not fetch a quote');
@@ -34,11 +35,11 @@ const DailyQuote = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <blockquote className="text-lg italic">
+        <blockquote className="text-lg italic mb-4">
           "{quote}" {author && <span>- {author}</span>}
         </blockquote>
       )}
-      <button className="btn btn-secondary mt-4" onClick={fetchQuote}>
+      <button className="btn btn-secondary w-full py-4 mb-4" onClick={fetchQuote}>
         Get a New Quote
       </button>
     </div>
