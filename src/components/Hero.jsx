@@ -3,7 +3,6 @@ import StorageHandler from "./StorageHandler";
 
 const Hero = ({ openDairyEntryModal, toggleModal, setSelectedItem }) => {
   const imgUrl = new URL("../assets/bg.jpg", import.meta.url).href;
-  console.log(imgUrl);
 
   const todaysEntry = StorageHandler.getTodaysEntry();
 
