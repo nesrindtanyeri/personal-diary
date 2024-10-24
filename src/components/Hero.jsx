@@ -1,5 +1,6 @@
 import ThemeSwitcher from "./ThemeSwitcher";
 import StorageHandler from "./StorageHandler";
+import DailyQuote from "./DailyQuote";
 
 const Hero = ({ openDairyEntryModal, toggleModal, setSelectedItem }) => {
   const imgUrl = new URL("../assets/bg.jpg", import.meta.url).href;
@@ -26,6 +27,7 @@ const Hero = ({ openDairyEntryModal, toggleModal, setSelectedItem }) => {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
+          <DailyQuote />
           {todaysEntry ? (
             // we have an entry for today, so we have to open the entry details modal
             <button className="btn btn-primary w-full py-4 mb-4" onClick={() => setModalContent()}>

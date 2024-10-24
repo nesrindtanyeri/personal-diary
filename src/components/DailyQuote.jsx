@@ -8,7 +8,7 @@ const DailyQuote = () => {
   const fetchQuote = async () => {
     setLoading(true); 
     try {
-      const response = await fetch('https://zenquotes.io/api/random');
+      const response = await fetch('https://goquotes-api.herokuapp.com/api/v1/random');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
