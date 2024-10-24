@@ -54,6 +54,13 @@ const StorageHandler = {
   createRandomID: () => {
     return crypto.randomUUID();
   },
+
+  saveTheme: (theme)=>{
+    localStorage.setItem("theme", theme)
+  },
+  getTheme:()=>{
+    return localStorage.getItem("theme");
+  }
 };
 
 export default StorageHandler;

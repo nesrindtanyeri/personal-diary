@@ -1,5 +1,16 @@
+import { useEffect, useState } from "react";
+import StorageHandler from "./StorageHandler";
+
 const ThemeSwitcher = () => {
   // TODO: save / retrieve theme using localStorage
+  const [theme, setTheme] = useState(null);
+
+  useEffect (() => {
+    if(!theme) return;
+    StorageHandler.saveTheme(theme);
+    console.log(theme)
+  },[theme]);
+
   return (
     <div className="dropdown mb-72">
       <div tabIndex={0} role="button" className="btn m-1">
@@ -23,6 +34,7 @@ const ThemeSwitcher = () => {
             type="radio"
             name="theme-dropdown"
             className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+            onClick={()=>setTheme("dracula")}
             aria-label="Default (dracula)"
             value="default"
           />
@@ -32,6 +44,7 @@ const ThemeSwitcher = () => {
             type="radio"
             name="theme-dropdown"
             className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+            onClick={()=>setTheme("light")}
             aria-label="light"
             value="light"
           />
@@ -41,6 +54,7 @@ const ThemeSwitcher = () => {
             type="radio"
             name="theme-dropdown"
             className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+            onClick={()=>setTheme("dark")}
             aria-label="dark"
             value="dark"
           />
@@ -50,6 +64,7 @@ const ThemeSwitcher = () => {
             type="radio"
             name="theme-dropdown"
             className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+            onClick={()=>setTheme("aqua")}
             aria-label="aqua"
             value="aqua"
           />
