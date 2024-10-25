@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 
-import daisyui from "daisyui";
+//import daisyui from "daisyui";
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  safelist: ["alert-success", "alert-error"],
+  safelist: ["alert-success", "alert-error", "alert-info", "alert-warning"],
   theme: {
     extend: {},
   },
