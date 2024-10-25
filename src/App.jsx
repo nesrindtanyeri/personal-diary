@@ -24,7 +24,7 @@ function App() {
     document.documentElement.dataset.theme = theme;
     document.body.classList.remove('hidden');
 
-    setEntryList(StorageHandler.getList());
+    updateList();
   }, []);
 
   // Handles editing the selected entry
@@ -39,22 +39,20 @@ function App() {
     // Add your delete logic here
     StorageHandler.removeItemByTimestamp(item.timestamp);
     document.getElementById('default-modal').close();
-    // we need time as an unique identifier
-    // const time = new Date().getTime();
-    // setAlerts([
-    //   <Alert key={time} delay={9000} type="success" text="Entry has been deleted" />,
-    //   ...alerts,
-    // ]);
 
-    addAlert('success', 'Entry has been deleted')
+    addAlert('success', 'Entry has been deleted');
 
-    setEntryList(StorageHandler.getList());
+    updateList();
   };
+
+  const  updateList=()=>{
+    setEntryList(StorageHandler.getList());
+  }
 
   const addAlert = (type, text) => {
     const time = new Date().getTime();
     setAlerts([
-      <Alert key={time} delay={9000} type={type} text={text} />,
+      <Alert key={time} delay={5000} type={type} text={text} />,
       ...alerts,
     ]);
   }
@@ -87,7 +85,7 @@ function App() {
 
       <AlertContainer alerts={alerts} />
 
-      <DiaryEntryModal addAlert={addAlert}/>
+      <DiaryEntryModal addAlert={addAlert} updateList={updateList}/>
 
       {/* Pass handleEdit and handleDelete to DefaultModal */}
       <DefaultModal selectedItem={selectedItem} handleEdit={handleEdit} handleDelete={handleDelete} />

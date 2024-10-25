@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import StorageHandler from './StorageHandler';
 import Alert from './Alert';
-const AddDiaryEntry = ({ addAlert}) => {
+const AddDiaryEntry = ({ addAlert, updateList}) => {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [image, setImage] = useState('');
@@ -24,6 +24,7 @@ const AddDiaryEntry = ({ addAlert}) => {
     setContent('');
 
     addAlert('success','Entry saved');
+    updateList();
   };
 
   const handleBrowseClick = () => {
