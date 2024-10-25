@@ -1,6 +1,6 @@
 import AddDiaryEntry from "./AddDiaryEntry";
 const DiaryEntryModal = ({addAlert, updateList}) => {
-const imgUrl = new URL('../assets/img/formbg2.jpg', import.meta.url).href;
+const imgUrl = new URL('../assets/img/reminder1.jpg', import.meta.url).href;
   return (
     <dialog
   id="DairyEntryModal"
