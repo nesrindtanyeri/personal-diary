@@ -31,8 +31,7 @@ const DefaultModal = ({ selectedItem, handleEdit, handleDelete }) => {
           )}
           <div className="card-body">
             <p>
-              {selectedItem.date}{" "}
-              <span className="text-sm">timestamp: {selectedItem.timestamp}</span>
+              {selectedItem.date}
             </p>
             {isEditing ? (
               <div>
