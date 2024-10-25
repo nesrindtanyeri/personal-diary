@@ -9,6 +9,9 @@ const StorageHandler = {
       if (a.date > b.date) {
         return -1;
       }
+      if (a.date < b.date) {
+        return 1;
+      }
     });
     return list;
   },
@@ -25,7 +28,7 @@ const StorageHandler = {
     // add id & timestamp to the item
     item = { ...item, id: id, timestamp: timestamp };
     const list = JSON.parse(localStorage.getItem("personalDiary")) || [];
-    list.unshift(item);
+    list.push(item);
     localStorage.setItem("personalDiary", JSON.stringify(list));
   },
 
@@ -39,8 +42,19 @@ const StorageHandler = {
     localStorage.setItem("personalDiary", JSON.stringify(filteredList));
   },
 
-  editItem: (item) => {
-    // TODO:
+  /**
+   * updates an existing item
+   * @param {Object} item 
+   */
+  updateItem: (item) => {
+    console.log("Updating item:", item);
+
+    // TODO: chenge the item
+    const list = JSON.parse(localStorage.getItem("personalDiary")) || [];
+    const objIndex = list.findIndex(obj => obj.timestamp == item.timestamp);
+    list[objIndex].title = item.title;
+    list[objIndex].content = item.content;
+    localStorage.setItem("personalDiary", JSON.stringify(list));
   },
 
   /**
@@ -61,14 +75,11 @@ const StorageHandler = {
     const list = JSON.parse(localStorage.getItem("personalDiary")) || [];
     const found = list.find((item) => {
       const today = new Date();
-
       const todayDate = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
-      console.log(item.date,todayDate);
       return (
         item.date === todayDate
       );
     });
-    console.log(found)
     return found;
   },
 

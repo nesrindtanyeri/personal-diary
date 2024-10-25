@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const DefaultModal = ({ selectedItem, handleEdit, handleDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -15,6 +15,10 @@ const DefaultModal = ({ selectedItem, handleEdit, handleDelete }) => {
       handleDelete(selectedItem); // Delete the selected item
     }
   };
+
+  useEffect(()=>{
+    setEditedEntry(selectedItem);
+  },[selectedItem])
 
   return (
     <dialog id="default-modal" className="modal">
