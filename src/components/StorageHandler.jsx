@@ -4,7 +4,13 @@ const StorageHandler = {
    * @returns {Array} the complete list
    */
   getList: () => {
-    return JSON.parse(localStorage.getItem("personalDiary")) || [];
+    let list = JSON.parse(localStorage.getItem("personalDiary")) || [];
+    list.sort((a, b) => {
+      if (a.date > b.date) {
+        return -1;
+      }
+    });
+    return list;
   },
 
   /**
@@ -33,6 +39,9 @@ const StorageHandler = {
     localStorage.setItem("personalDiary", JSON.stringify(filteredList));
   },
 
+  editItem: (item) => {
+    // TODO:
+  },
 
   /**
    * removes an item from local storage by timestamp
@@ -52,14 +61,21 @@ const StorageHandler = {
     const list = JSON.parse(localStorage.getItem("personalDiary")) || [];
     const found = list.find((item) => {
       const today = new Date();
-      const itemDate = new Date(item.timestamp);
+
+      const todayDate = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
+      console.log(item.date,todayDate);
       return (
-        itemDate.getDate() == today.getDate() &&
-        itemDate.getMonth() == today.getMonth() &&
-        itemDate.getFullYear() == today.getFullYear()
+        item.date === todayDate
       );
     });
+    console.log(found)
     return found;
+  },
+
+  hasEntryAtDate: (date) => {
+    const list = JSON.parse(localStorage.getItem("personalDiary")) || [];
+    const found = list.find((item) => item.date === date);
+    return !!found;
   },
 
   /**
@@ -72,19 +88,19 @@ const StorageHandler = {
 
   /**
    * saves the theme to localStorage
-   * @param {String} theme 
+   * @param {String} theme
    */
-  saveTheme: (theme)=>{
-    localStorage.setItem("theme", theme)
+  saveTheme: (theme) => {
+    localStorage.setItem("theme", theme);
   },
 
   /**
    * gets the saved theme from localStorage
    * @returns {String}  the theme from localStorage
    */
-  getTheme:()=>{
+  getTheme: () => {
     return localStorage.getItem("theme");
-  }
+  },
 };
 
 export default StorageHandler;
