@@ -22,6 +22,8 @@ const AddDiaryEntry = ({ addEntry }) => {
     setDate('');
     setImage('');
     setContent('');
+
+    alert('Saved!');
   };
 
   const handleBrowseClick = () => {
