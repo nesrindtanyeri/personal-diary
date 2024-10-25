@@ -3,7 +3,7 @@ import StorageHandler from "./StorageHandler";
 import DailyQuote from "./DailyQuote";
 
 const Hero = ({ openDairyEntryModal, toggleModal, setSelectedItem }) => {
-  const imgUrl = new URL("../assets/bg.jpg", import.meta.url).href;
+  const imgUrl = new URL("../assets/img/diary1.jpg", import.meta.url).href;
 
   const todaysEntry = StorageHandler.getTodaysEntry();
 
