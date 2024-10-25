@@ -4,7 +4,13 @@ const StorageHandler = {
    * @returns {Array} the complete list
    */
   getList: () => {
-    return JSON.parse(localStorage.getItem("personalDiary")) || [];
+    let list = JSON.parse(localStorage.getItem("personalDiary")) || [];
+    list.sort((a,b) =>{
+      if (a.date > b.date) {
+        return -1;
+      }
+    })
+    return list;
   },
 
   /**
@@ -64,6 +70,12 @@ const StorageHandler = {
       );
     });
     return found;
+  },
+
+  hasEntryAtDate: (date) => {
+    const list = JSON.parse(localStorage.getItem("personalDiary")) || [];
+    const found = list.find((item) => item.date === date);
+    return !!found;
   },
 
   /**

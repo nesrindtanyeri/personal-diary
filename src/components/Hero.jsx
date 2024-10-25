@@ -33,7 +33,7 @@ const Hero = ({ openDairyEntryModal, toggleModal, setSelectedItem }) => {
             </button>
           ) : (
             // we have no entry for today, so we have to open the form-input modal
-            <button className="btn btn-primary" onClick={toggleModal}>
+            <button className="btn btn-primary" onClick={openDairyEntryModal}>
               Let's start!
             </button>
           )}
