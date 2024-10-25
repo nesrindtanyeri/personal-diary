@@ -34,7 +34,7 @@ const ThemeSwitcher = () => {
             className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
             onClick={()=>setTheme("dracula")}
             aria-label="Default (dracula)"
-            value="default"
+            value="dracula"
           />
         </li>
         <li>
