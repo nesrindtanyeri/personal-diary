@@ -9,18 +9,13 @@ import Alert from "./components/Alert";
 import StorageHandler from "./components/StorageHandler";
 
 function App() {
+  const [entryList, setEntryList] = useState(null);
   const [selectedItem, setSelectedItem] = useState(false);
   const [alerts, setAlerts] = useState([]);
 
-  // TODO: use this as alert (this is just a fake)
   useEffect(() => {
     if (!selectedItem) return;
     toggleModal();
-    const time = new Date().getTime();
-    setAlerts([
-      <Alert key={time} delay={9000} type="success" text="This is an alert" />,
-      ...alerts,
-    ]);
   }, [selectedItem]);
 
   // set the theme of the page to the one selected (from localStorage)
@@ -28,19 +23,41 @@ function App() {
     const theme = StorageHandler.getTheme();
     document.documentElement.dataset.theme = theme;
     document.body.classList.remove('hidden');
+
+    setEntryList(StorageHandler.getList());
   }, []);
 
   // Handles editing the selected entry
   const handleEdit = (item) => {
     console.log("Editing item:", item);
-    // Add your edit logic here
+    // TODO: Add your edit logic here
   };
 
   // Handles deleting the selected entry
   const handleDelete = (item) => {
     console.log("Deleting item:", item);
     // Add your delete logic here
+    StorageHandler.removeItemByTimestamp(item.timestamp);
+    document.getElementById('default-modal').close();
+    // we need time as an unique identifier
+    // const time = new Date().getTime();
+    // setAlerts([
+    //   <Alert key={time} delay={9000} type="success" text="Entry has been deleted" />,
+    //   ...alerts,
+    // ]);
+
+    addAlert('success', 'Entry has been deleted')
+
+    setEntryList(StorageHandler.getList());
   };
+
+  const addAlert = (type, text) => {
+    const time = new Date().getTime();
+    setAlerts([
+      <Alert key={time} delay={9000} type={type} text={text} />,
+      ...alerts,
+    ]);
+  }
 
   /**
    * shows / hides the modal content
@@ -64,13 +81,13 @@ function App() {
       </header>
 
       <main>
-        <DiaryEntryList setSelectedItem={setSelectedItem} />
+        <DiaryEntryList setSelectedItem={setSelectedItem} entryList={entryList} />
       </main>
       <Footer />
 
       <AlertContainer alerts={alerts} />
 
-      <DiaryEntryModal setAlerts={setAlerts} alerts={alerts} />
+      <DiaryEntryModal addAlert={addAlert}/>
 
       {/* Pass handleEdit and handleDelete to DefaultModal */}
       <DefaultModal selectedItem={selectedItem} handleEdit={handleEdit} handleDelete={handleDelete} />

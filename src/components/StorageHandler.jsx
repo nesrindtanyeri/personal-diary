@@ -33,6 +33,10 @@ const StorageHandler = {
     localStorage.setItem("personalDiary", JSON.stringify(filteredList));
   },
 
+  editItem: (item) => {
+    // TODO: 
+  },
+
 
   /**
    * removes an item from local storage by timestamp
