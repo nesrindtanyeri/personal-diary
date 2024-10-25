@@ -11,12 +11,12 @@ const AddDiaryEntry = ({ addAlert, updateList}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title || !date || !content) {
-      addAlert('error','Please fill in all the fields');
+      addAlert('warning','Please fill in all the fields');
       return;
     }
     // one entry per day only
     if(StorageHandler.hasEntryAtDate(date)){
-      addAlert('error','Just one entry per day please!');
+      addAlert('warning','Just one entry per day please!');
       return
     }
 
