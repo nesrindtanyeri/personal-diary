@@ -52,7 +52,7 @@ const AddDiaryEntry = ({ addAlert, updateList}) => {
       type="text"
       value={title}
       onChange={(e) => setTitle(e.target.value)}
-      className="flex-1 p-2 border rounded-md"
+      className="flex-1 input input-bordered"
     />
   </div>
 
@@ -62,7 +62,7 @@ const AddDiaryEntry = ({ addAlert, updateList}) => {
       type="date"
       value={date}
       onChange={(e) => setDate(e.target.value)}
-      className="flex-1 p-2 border rounded-md"
+      className="flex-1 input input-bordered"
     />
   </div>
 
@@ -72,11 +72,11 @@ const AddDiaryEntry = ({ addAlert, updateList}) => {
       type="url"
       value={image}
       onChange={(e) => setImage(e.target.value)}
-      className="flex-1 p-2 border rounded-md"
+      className="flex-1 input input-bordered"
     />
     <button
       type="button"
-      className="bg-pink-400 text-black font-bold px-4 py-2 ml-4 rounded-md"
+      className="btn btn-primary ml-1"
       onClick={handleBrowseClick}
     >
       Browse
@@ -88,11 +88,11 @@ const AddDiaryEntry = ({ addAlert, updateList}) => {
     <textarea
       value={content}
       onChange={(e) => setContent(e.target.value)}
-      className="w-full p-2 border rounded-md mt-2"
+      className="w-full textarea textarea-bordered"
     ></textarea>
   </div>
 
-  <button type="submit" className="w-full bg-pink-400 text-black font-bold py-2 px-4 mt-4 rounded-md">
+  <button type="submit" className="w-full btn btn-primary">
     Add Entry
   </button>
 
