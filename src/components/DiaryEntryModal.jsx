@@ -14,8 +14,8 @@ const imgUrl = new URL('../assets/img/formbg2.jpg', import.meta.url).href;
         ✕
       </button>
     </form>
-    <h3 className="font-bold text-lg">Hey babe!</h3>
-    <p className="py-4">Create a new memory</p>
+    <h3 className="font-bold text-lg">Welcome back!</h3>
+    <p className="py-4">Let's create a new memory</p>
     <AddDiaryEntry addAlert={addAlert} updateList={updateList} />
   </div>
 </dialog>

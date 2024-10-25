@@ -21,8 +21,8 @@ const Hero = ({ openDairyEntryModal, toggleModal, setSelectedItem }) => {
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">Personal Diary</h1>
-          <p className="mb-5 font-bold">
+          <h1 className="mb-5 text-5xl font-bold font-roboto">Personal Diary</h1>
+          <p className="mb-5 font-bold font-roboto">
             A place where you can write down your thoughts and memories.
           </p>
           <DailyQuote />

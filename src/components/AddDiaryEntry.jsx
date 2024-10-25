@@ -44,7 +44,7 @@ const AddDiaryEntry = ({ addAlert, updateList}) => {
 
   return (
 <form className="add-entry-form max-w-lg mx-auto bg-black p-6 rounded-lg shadow-lg" onSubmit={handleSubmit}  >
-  <h2 className="text-2xl font-bold mb-5 text-center">Add New</h2>
+  <h2 className="text-2xl font-bold mb-5 text-center">Enter Your Memory</h2>
 
   <div className="mb-4 flex items-center justify-between">
     <label className="mr-4 font-medium">Title:</label>
