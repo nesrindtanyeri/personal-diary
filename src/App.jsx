@@ -1,6 +1,6 @@
 import DefaultModal from "./components/DefaultModal";
 import Hero from "./components/Hero";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 import DiaryEntryModal from "./components/DiaryEntryModal";
 import DiaryEntryList from "./components/DiaryEntryList";
 import { useEffect, useState } from "react";
