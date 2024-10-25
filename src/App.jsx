@@ -32,6 +32,9 @@ function App() {
     console.log("Editing item:", item);
     // Add your edit logic here
     StorageHandler.updateItem(item);
+
+    addAlert("success", "Entry has been updated");
+
     updateList();
     document.getElementById("default-modal").close();
   };
