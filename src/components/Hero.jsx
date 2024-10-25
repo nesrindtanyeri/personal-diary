@@ -26,15 +26,10 @@ const Hero = ({ openDairyEntryModal, toggleModal, setSelectedItem }) => {
             A place where you can write down your thoughts and memories.
           </p>
           <DailyQuote />
-          {todaysEntry ? (
+          {todaysEntry && (
             // we have an entry for today, so we have to open the entry details modal
             <button className="btn btn-primary w-full py-4 mb-4" onClick={() => setModalContent()}>
               See what happened today
-            </button>
-          ) : (
-            // we have no entry for today, so we have to open the form-input modal
-            <button className="btn btn-primary" onClick={openDairyEntryModal}>
-              Let's start!
             </button>
           )}
           <button className="btn btn-primary w-full py-4" onClick={openDairyEntryModal}>

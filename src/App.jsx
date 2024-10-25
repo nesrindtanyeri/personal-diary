@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     const theme = StorageHandler.getTheme();
     document.documentElement.dataset.theme = theme;
-    document.body.classList.remove('hidden');
+    document.body.classList.remove("hidden");
 
     updateList();
   }, []);
@@ -30,7 +30,10 @@ function App() {
   // Handles editing the selected entry
   const handleEdit = (item) => {
     console.log("Editing item:", item);
-    // TODO: Add your edit logic here
+    // Add your edit logic here
+    StorageHandler.updateItem(item);
+    updateList();
+    document.getElementById("default-modal").close();
   };
 
   // Handles deleting the selected entry
@@ -38,16 +41,16 @@ function App() {
     console.log("Deleting item:", item);
     // Add your delete logic here
     StorageHandler.removeItemByTimestamp(item.timestamp);
-    document.getElementById('default-modal').close();
+    document.getElementById("default-modal").close();
 
-    addAlert('success', 'Entry has been deleted');
+    addAlert("success", "Entry has been deleted");
 
     updateList();
   };
 
-  const  updateList=()=>{
+  const updateList = () => {
     setEntryList(StorageHandler.getList());
-  }
+  };
 
   const addAlert = (type, text) => {
     const time = new Date().getTime();
@@ -55,7 +58,7 @@ function App() {
       <Alert key={time} delay={5000} type={type} text={text} />,
       ...alerts,
     ]);
-  }
+  };
 
   /**
    * shows / hides the modal content
@@ -79,16 +82,23 @@ function App() {
       </header>
 
       <main>
-        <DiaryEntryList setSelectedItem={setSelectedItem} entryList={entryList} />
+        <DiaryEntryList
+          setSelectedItem={setSelectedItem}
+          entryList={entryList}
+        />
       </main>
       <Footer />
 
       <AlertContainer alerts={alerts} />
 
-      <DiaryEntryModal addAlert={addAlert} updateList={updateList}/>
+      <DiaryEntryModal addAlert={addAlert} updateList={updateList} />
 
       {/* Pass handleEdit and handleDelete to DefaultModal */}
-      <DefaultModal selectedItem={selectedItem} handleEdit={handleEdit} handleDelete={handleDelete} />
+      <DefaultModal
+        selectedItem={selectedItem}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
     </>
   );
 }
