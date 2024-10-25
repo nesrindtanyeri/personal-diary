@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import StorageHandler from './StorageHandler';
-
-const AddDiaryEntry = ({ addEntry }) => {
+import Alert from './Alert';
+const AddDiaryEntry = ({ setAlerts, alerts }) => {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [image, setImage] = useState('');
@@ -11,7 +11,11 @@ const AddDiaryEntry = ({ addEntry }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title || !date || !content) {
-      alert('Please fill in all the fields.');
+          const time = new Date().getTime();
+      setAlerts([
+        <Alert key={time} delay={9000} type="error" text="Please fill in all the fields." />,
+        ...alerts,
+      ]);
       return;
     }
 
