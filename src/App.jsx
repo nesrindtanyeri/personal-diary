@@ -57,7 +57,7 @@ function App() {
 
       <AlertContainer alerts={alerts} />
 
-      <DiaryEntryModal />
+      <DiaryEntryModal setAlerts={setAlerts} alerts={alerts} />
       <DefaultModal selectedItem={selectedItem} />
     </>
   );

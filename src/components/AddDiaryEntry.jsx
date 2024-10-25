@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import StorageHandler from './StorageHandler';
-
-const AddDiaryEntry = ({ addEntry }) => {
+import Alert from './Alert';
+const AddDiaryEntry = ({ setAlerts, alerts }) => {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [image, setImage] = useState('');
@@ -11,7 +11,11 @@ const AddDiaryEntry = ({ addEntry }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title || !date || !content) {
-      alert('Please fill in all the fields.');
+          const time = new Date().getTime();
+      setAlerts([
+        <Alert key={time} delay={9000} type="error" text="Please fill in all the fields." />,
+        ...alerts,
+      ]);
       return;
     }
 
@@ -37,7 +41,7 @@ const AddDiaryEntry = ({ addEntry }) => {
 
   return (
 <form className="add-entry-form max-w-lg mx-auto bg-black p-6 rounded-lg shadow-lg" onSubmit={handleSubmit}  >
-  <h2 className="text-2xl font-bold mb-5 text-center">Add New Event</h2>
+  <h2 className="text-2xl font-bold mb-5 text-center">Add New</h2>
 
   <div className="mb-4 flex items-center justify-between">
     <label className="mr-4 font-medium">Title:</label>

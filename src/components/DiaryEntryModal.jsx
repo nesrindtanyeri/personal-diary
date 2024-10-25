@@ -1,5 +1,5 @@
 import AddDiaryEntry from "./AddDiaryEntry";
-const DiaryEntryModal = () => {
+const DiaryEntryModal = ({setAlerts, alerts}) => {
 const imgUrl = new URL('../assets/img/formbg2.jpg', import.meta.url).href;
   return (
     <dialog
@@ -14,9 +14,9 @@ const imgUrl = new URL('../assets/img/formbg2.jpg', import.meta.url).href;
         ✕
       </button>
     </form>
-    <h3 className="font-bold text-lg">I did this.</h3>
-    <p className="py-4">Don't press this button!</p>
-    <AddDiaryEntry />
+    <h3 className="font-bold text-lg">Hey babe!</h3>
+    <p className="py-4">Create a new memory</p>
+    <AddDiaryEntry setAlerts={setAlerts} alerts={alerts} />
   </div>
 </dialog>
   );
